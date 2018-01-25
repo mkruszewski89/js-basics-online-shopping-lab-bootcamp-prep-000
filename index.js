@@ -43,10 +43,11 @@ function total() {
   return currentTotalCartValue
 }
 
+/*
 function removeFromCart(itemName) {
   var removeIndex
   for (var i = 0; i < cart.length; i += 1) {
-    if (Object.keys(cart[i])[0] === itemName) {
+    if (cart[i].hasOwnProperty(itemName)) {
       removeIndex = i
       break
     }
@@ -57,6 +58,18 @@ function removeFromCart(itemName) {
     cart.splice(removeIndex, 1)
   }
   return cart
+}
+*/
+
+function removeFromCart(item) {
+  for (let i=0; i<cart.length; i++) {
+    if (cart[i].hasOwnProperty([item])){
+      cart.splice(i, 1);
+      return cart;
+    }
+  }
+  console.log("That item is not in your cart.");
+  return cart;
 }
 
 function placeOrder(cardNumber) {
